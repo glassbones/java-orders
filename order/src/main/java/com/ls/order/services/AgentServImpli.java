@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-@Transactional
+//@Transactional
 @Service(value = "agentServ")
 public class AgentServImpli implements AgentServ {
 
@@ -16,7 +16,5 @@ public class AgentServImpli implements AgentServ {
 
     @Transactional
     @Override
-    public Agent save(Agent order) {
-        return agentRepos.save(order);
-    }
+    public Agent save(Agent agent) { return agentRepos.save(agent); }
 }

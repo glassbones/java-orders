@@ -12,9 +12,9 @@ public class Order {
     @GeneratedValue
     private long ordnum;
 
-    private long advanceamount;
+    private double advanceamount;
     @Column(nullable = false)
-    private long orderamount;
+    private double orderamount;
     private String orderdescription;
 
     @ManyToOne
@@ -29,13 +29,14 @@ public class Order {
 
     public Order(){}
 
-    public Order(long advanceamount, long orderamount, String orderdescription) {
+    public Order(double advanceamount, double orderamount, String orderdescription, Customer customer) {
         this.advanceamount = advanceamount;
         this.orderamount = orderamount;
         this.orderdescription = orderdescription;
+        this.customer = customer;
     }
 
-    public long getOrdnum() {
+    public double getOrdnum() {
         return ordnum;
     }
 
@@ -43,19 +44,19 @@ public class Order {
         this.ordnum = ordnum;
     }
 
-    public long getAdvanceamount() {
+    public double getAdvanceamount() {
         return advanceamount;
     }
 
-    public void setAdvanceamount(long advanceamount) {
+    public void setAdvanceamount(double advanceamount) {
         this.advanceamount = advanceamount;
     }
 
-    public long getOrderamount() {
+    public double getOrderamount() {
         return orderamount;
     }
 
-    public void setOrderamount(long orderamount) {
+    public void setOrderamount(double orderamount) {
         this.orderamount = orderamount;
     }
 

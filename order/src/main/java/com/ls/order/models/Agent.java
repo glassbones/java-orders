@@ -13,17 +13,17 @@ public class Agent {
     private long agentcode;
 
     private String agentname;
-    private long commission;
+    private double commission;
     private String country;
     private String phone;
     private String workingarea;
 
-    @OneToMany(mappedBy = "agentcode", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Customer> customers = new ArrayList<>();
 
     public Agent(){};
 
-    public Agent(String agentname, long commission, String country, String phone, String workingarea) {
+    public Agent(String agentname, double commission, String country, String phone, String workingarea) {
         this.agentname = agentname;
         this.commission = commission;
         this.country = country;
@@ -47,7 +47,7 @@ public class Agent {
         this.agentname = agentname;
     }
 
-    public long getCommission() {
+    public double getCommission() {
         return commission;
     }
 
@@ -78,4 +78,17 @@ public class Agent {
     public void setWorkingarea(String workingarea) {
         this.workingarea = workingarea;
     }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
+
+    public void setCommission(double commission) {
+        this.commission = commission;
+    }
+
 }

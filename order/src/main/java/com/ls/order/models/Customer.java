@@ -11,29 +11,30 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long custcode;
-    //private long agentcode;
+    //private double agentcode;
 
     private String custcity;
     private String custcountry;
     private String custname;
     private String grade;
-    private long openingamt;
-    private long outstandingamt;
-    private long paymentamt;
+    private double openingamt;
+    private double outstandingamt;
+    private double paymentamt;
     private String phone;
-    private long receiveamt;
+    private double receiveamt;
     private String workingarea;
 
     @ManyToOne
     @JoinColumn(name = "agentcode", nullable = false)
     private Agent agent;
 
-    @OneToMany(mappedBy = "custcode", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> Orders = new ArrayList<>();
+
 
     public Customer(){}
 
-    public Customer(String custcity, String custcountry, String custname, String grade, long openingamt, long outstandingamt, long paymentamt, String phone, long receiveamt, String workingarea) {
+    public Customer(String custcity, String custcountry, String custname, String grade, double openingamt, double outstandingamt, double paymentamt, String phone, double receiveamt, String workingarea, Agent agent) {
         this.custcity = custcity;
         this.custcountry = custcountry;
         this.custname = custname;
@@ -44,9 +45,10 @@ public class Customer {
         this.phone = phone;
         this.receiveamt = receiveamt;
         this.workingarea = workingarea;
+        this.agent = agent;
     }
 
-    public long getCustcode() {
+    public double getCustcode() {
         return custcode;
     }
 
@@ -54,11 +56,11 @@ public class Customer {
         this.custcode = custcode;
     }
 /*
-    public long getAgentcode() {
+    public double getAgentcode() {
         return agentcode;
     }
 
-    public void setAgentcode(long agentcode) {
+    public void setAgentcode(double agentcode) {
         this.agentcode = agentcode;
     }
 */
@@ -94,27 +96,27 @@ public class Customer {
         this.grade = grade;
     }
 
-    public long getOpeningamt() {
+    public double getOpeningamt() {
         return openingamt;
     }
 
-    public void setOpeningamt(long openingamt) {
+    public void setOpeningamt(double openingamt) {
         this.openingamt = openingamt;
     }
 
-    public long getOutstandingamt() {
+    public double getOutstandingamt() {
         return outstandingamt;
     }
 
-    public void setOutstandingamt(long outstandingamt) {
+    public void setOutstandingamt(double outstandingamt) {
         this.outstandingamt = outstandingamt;
     }
 
-    public long getPaymentamt() {
+    public double getPaymentamt() {
         return paymentamt;
     }
 
-    public void setPaymentamt(long paymentamt) {
+    public void setPaymentamt(double paymentamt) {
         this.paymentamt = paymentamt;
     }
 
@@ -126,11 +128,11 @@ public class Customer {
         this.phone = phone;
     }
 
-    public long getReceiveamt() {
+    public double getReceiveamt() {
         return receiveamt;
     }
 
-    public void setReceiveamt(long receiveamt) {
+    public void setReceiveamt(double receiveamt) {
         this.receiveamt = receiveamt;
     }
 
@@ -148,5 +150,13 @@ public class Customer {
 
     public void setAgent(Agent agent) {
         this.agent = agent;
+    }
+
+    public List<Order> getOrders() {
+        return Orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        Orders = orders;
     }
 }
